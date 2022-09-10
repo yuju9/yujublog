@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="kr">
+    <head>
+        <title>Yuju 블로그</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="/css/main.css" />
+        <noscript><link rel="stylesheet" href="/css/noscript.css"/></noscript>
+    </head>
+    <body class="is-loading">
+
+<!-- Wrapper -->
+    <div id="wrapper" class="fade-in">
+
+    <!-- Intro -->
+    <div id="intro">
+        <h1>H! I'M<br />
+            YUJU</h1>
+        <p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
+            and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
+        <ul class="actions">
+            <li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <a href="/" class="logo">Yuju</a>
+    </header>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul class="links">
+            <li><a href="/">MAIN</a></li>
+            <li class="active"><a href="/mainBoard">BOARD</a></li>
+            <li><a href="/news">NEWS</a></li>
+            <li><a href="/music">MUSIC</a></li>
+            <li><a href="/ask">ASK</a></li>
+        </ul>
+        <ul class="icons">
+            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="main">
+        <article class="post featured">
+            <header class="major">
+                <span class="date" th:text="${board.getCreateDate()}">April 25, 2017</span>
+                <div>
+                    글번호 : <span th:id="id"><i th:text="${board.id}"></i></span><br></div>
+                <h2 th:text="${board.title}">And this is a<br />
+                    massive headline</h2>
+                <p th:text="${board.content}"></p>
+            </header>
+            <hr/>
+            <button id="btn-back" th:onclick="|location.href='@{/}'|">뒤로가기</button>
+            <button id ="btn-delete">삭제</button>
+        </article>
+    </div>
+
+
+    <!-- Copyright -->
+    <div id="copyright">
+        Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.scrollex.min.js"></script>
+<script src="js/jquery.scrolly.min.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/main.js"></script>
+<script src="js/board.js"></script>
+</body>
+</html>

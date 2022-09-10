@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="kr">
+	<head>
+		<title>Yuju 블로그</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="css/main.css" />
+		<noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
+		<link
+				rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+		/>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	</head>
+	<body class="is-loading">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>H! I'M<br />
+						YUJU</h1>
+						<p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
+						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+
+				<!-- Header -->
+					<header id="header">
+						<a href="/" class="logo">Yuju</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="/">MAIN</a></li>
+							<li><a href="/mainBoard">BOARD</a></li>
+							<li class="active"><a href="/news">NEWS</a></li>
+							<li><a href="/music">MUSIC</a></li>
+							<li><a href="/ask">ASK</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class = "economy">
+							<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<h2>FINANCE<a class = "button-next" role="button"> &nbsp;></a></h2>
+									<p>from. Naver News</p>
+								</header>
+							</article>
+
+							<!-- Posts -->
+							<section class="posts">
+								<article th:each="economy : ${Economy}">
+									<header>
+										<span class="date" th:text="${economy.date}">April 24, 2017</span>
+										<h2 th:text="${economy.title}"><br />
+											ipsum faucibus</h2>
+									</header>
+									<p th:text="${economy.content}">Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+									<ul class="actions">
+										<li><a th:href="|${economy.url}|" class="button">자세히 보기</a></li>
+									</ul>
+									<hr/>
+								</article>
+							</section>
+						</div>
+						<div class = "it">
+							<article class="post featured">
+								<header class="major">
+									<h2><a class = "button-before" role="button">< &nbsp;</a>IT</h2>
+									<p>from. Naver News</p>
+								</header>
+							</article>
+
+							<!-- Posts -->
+							<section class="posts">
+								<article th:each="it : ${It}">
+									<header>
+										<span class="date" th:text="${it.date}">April 24, 2017</span>
+										<h2 th:text="${it.title}"><br />
+											ipsum faucibus</h2>
+									</header>
+									<p th:text="${it.content}">Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+									<ul class="actions">
+										<li><a th:href="|${it.url}|" class="button">자세히 보기</a></li>
+									</ul>
+									<hr/>
+								</article>
+							</section>
+						</div>
+
+					</div>
+
+
+				<!-- Copyright -->
+					<div id="copyright">
+						Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="js/jquery.min.js"></script>
+			<script src="js/jquery.scrollex.min.js"></script>
+			<script src="js/jquery.scrolly.min.js"></script>
+			<script src="js/skel.min.js"></script>
+			<script src="js/util.js"></script>
+			<script src="js/main.js"></script>
+			<script>
+			$(document).ready(function() {
+				$('.economy').show();
+				$('.it').hide();
+				$('.button-next').click(function(){
+					$ ('.economy').hide();
+					$ ('.it').show();
+					$('.button-before').click(function(){
+						$('.economy').show();
+						$('.it').hide();
+						return false;
+					});
+				});
+			});
+			</script>
+	</body>
+</html>
