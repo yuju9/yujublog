@@ -70,7 +70,11 @@
 									<p th:text="${board.content}">Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
 									<ul class="actions">
 										<li><a th:href="@{/board/{id}(id=${board.getId()})}" class="button">자세히</a></li>
+										<li><button id ="btn-delete">삭제</button></li>
 									</ul>
+									<div hidden>
+										<span th:id="id"><i th:text="${board.id}"></i></span><br>
+									</div>
 								</article>
 							</section>
 						<article class="post featured">

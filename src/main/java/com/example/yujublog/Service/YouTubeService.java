@@ -83,7 +83,7 @@ public class YouTubeService implements YouTubeProvider {
                 }
             }).setApplicationName("youtube-video-duration-get").build();
 
-            //내가 원하는 정보 지정할 수 있어요. 공식 API문서를 참고해주세요.
+
             YouTube.Videos.List videos = youtube.videos().list("id,snippet,contentDetails");
             videos.setKey("AIzaSyATwanBiKb1_Rz7kKgmnKC1IAQWXxW9QyU");
             videos.setId("gFZfwWZV074");
