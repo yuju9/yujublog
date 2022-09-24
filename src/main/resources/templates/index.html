@@ -51,7 +51,7 @@
 							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 							<li><a href="#" class="icon fa-google-plus"><span class="label">Facebook</span></a></li>
 							<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-							<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="/loginForm" class="icon fa-sign-in"><span class="label">Sign In</span></a></li>
 						</ul>
 					</nav>
 
@@ -70,21 +70,6 @@
 
 							</article>
 
-						<!-- Posts -->
-							<section class="posts">
-								<article th:each="board: ${boards}">
-									<header>
-										<span class="date" th:text="${board.createDate}">April 24, 2017</span>
-										<h2 th:text="${board.title}"><a href="#">Sed magna<br />
-										ipsum faucibus</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
-									<p th:text="${board.content}">Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions">
-										<li><a th:href="@{/board/{id}(id=${board.getId()})}" class="button">자세히</a></li>
-									</ul>
-								</article>
-							</section>
 					</div>
 
 

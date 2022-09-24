@@ -1,7 +1,6 @@
 package com.example.yujublog.Service;
 
-import com.example.yujublog.dto.YouTubeDto;
-import com.example.yujublog.model.Economy;
+import com.example.yujublog.model.YouTube;
 import com.example.yujublog.repository.YouTubeProvider;
 import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpRequest;
@@ -10,15 +9,8 @@ import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
-import com.google.api.services.youtube.YouTube;
-import com.google.api.services.youtube.model.ResourceId;
-import com.google.api.services.youtube.model.SearchResult;
 import com.google.api.services.youtube.model.Thumbnail;
 import com.google.api.services.youtube.model.Video;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -31,9 +23,9 @@ public class YouTubeService implements YouTubeProvider {
     private static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
     private static final JsonFactory JSON_FACTORY = new JacksonFactory();
     private static final long NUMBER_OF_VIDEOS_RETURNED = 1;
-    private static YouTube youtube;
+    private static com.google.api.services.youtube.YouTube youtube;
 
-    private static void prettyPrint(Iterator<Video> iteratorSearchResults, YouTubeDto youTubeDto) {
+    private static void prettyPrint(Iterator<Video> iteratorSearchResults, YouTube youTube) {
 
         System.out.println("\n=============================================================");
         System.out.println("=============================================================\n");
@@ -55,43 +47,41 @@ public class YouTubeService implements YouTubeProvider {
                 System.out.println("\n-------------------------------------------------------------\n");
 
 
-                List<YouTubeDto> youtubeList = new ArrayList<>();
 
-                YouTubeDto youTubeDto1 = YouTubeDto.builder()
+                List<YouTube> youtubeList = new ArrayList<>();
+
+                YouTube youTube1 = YouTube.builder()
                         .title(singleVideo.getSnippet().getTitle())
                         .thumbnailPath(thumbnail.getUrl())
                         .videoId(String.valueOf(singleVideo.getId()))
                         .build();
 
-                youtubeList.add(youTubeDto1);
+                youtubeList.add(youTube1);
 
-
-                youTubeDto.setThumbnailPath(thumbnail.getUrl());
-                youTubeDto.setTitle(singleVideo.getSnippet().getTitle());
-                youTubeDto.setVideoId(String.valueOf(singleVideo.getId()));
             }
         }
     }
 
+
     @Override
-    public YouTubeDto get() {
-        YouTubeDto youTubeDto = new YouTubeDto();
+    public YouTube get() {
+        YouTube youTube = new YouTube();
 
         try {
-            youtube = new YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
+            youtube = new com.google.api.services.youtube.YouTube.Builder(HTTP_TRANSPORT, JSON_FACTORY, new HttpRequestInitializer() {
                 public void initialize(HttpRequest request) throws IOException {
                 }
             }).setApplicationName("youtube-video-duration-get").build();
 
 
-            YouTube.Videos.List videos = youtube.videos().list("id,snippet,contentDetails");
+            com.google.api.services.youtube.YouTube.Videos.List videos = youtube.videos().list("id,snippet,contentDetails");
             videos.setKey("AIzaSyATwanBiKb1_Rz7kKgmnKC1IAQWXxW9QyU");
             videos.setId("gFZfwWZV074");
             videos.setMaxResults(NUMBER_OF_VIDEOS_RETURNED); //조회 최대 갯수.
             List<Video> videoList = videos.execute().getItems();
 
             if (videoList != null) {
-                prettyPrint(videoList.iterator(), youTubeDto);
+                prettyPrint(videoList.iterator(), youTube);
             }
 
         } catch (GoogleJsonResponseException e) {
@@ -102,15 +92,16 @@ public class YouTubeService implements YouTubeProvider {
         } catch (Throwable t) {
             t.printStackTrace();
         }
-        return youTubeDto;
+        return youTube;
     }
 
-//    public static List<YouTubeDto> youTubeInfo() throws Exception {
+
+//    public static List<YouTube> youTubeInfo() throws Exception {
 //
-//        List<YouTubeDto> youtubeList = new ArrayList<>();
+//        List<YouTube> youtubeList = new ArrayList<>();
 //
 //
-//        YouTubeDto youTubeDto1 = YouTubeDto.builder()
+//        YouTube youTubeDto1 = YouTube.builder()
 //                .title(singleVideo.getSnippet().getTitle())
 //                .thumbnailPath(thumbnail.getUrl())
 //                .videoId(String.valueOf(singleVideo.getId()))

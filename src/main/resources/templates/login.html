@@ -42,46 +42,45 @@
     <nav id="nav">
         <ul class="links">
             <li><a href="/">MAIN</a></li>
-            <li class="active"><a href="/mainBoard">board</a></li>
+            <li><a href="/mainBoard">BOARD</a></li>
             <li><a href="/news">NEWS</a></li>
             <li><a href="/music">MUSIC</a></li>
             <li><a href="/ask">ASK</a></li>
         </ul>
-        <ul class="icons">
-            <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-            <li><a href="#" class="icon fa-google-plus"><span class="label">Facebook</span></a></li>
-            <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="/loginForm" class="icon fa-sign-in"><span class="label">Sign In</span></a></li>
-        </ul>
+        <<ul class="icons">
+        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon fa-google-plus"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="/loginForm" class="icon fa-sign-in"><span class="label">Sign In</span></a></li>
+    </ul>
     </nav>
 
     <!-- Main -->
     <div id="main">
-        <div class="container">
-            <form2>
-                <div class="form-group">
-                    <div class="form-group">
-                        <label for="category">카테고리:</label>
-                        <select class="form-control" id="category">
-                            <option th:value="daily">일상</option>
-                            <option th:value="study">공부</option>
-                        </select>
-                    </div>
 
-                    <label for="board-title">제목</label>
-                    <input type="text" class="form-control" placeholder="제목을 입력해주세요." id="board-title">
-                    <label for="board-content">내용</label>
-                    <textarea class="form-control summernote" rows="5" id="board-content"></textarea>
+        <!-- Featured Post -->
+        <article class="post featured">
+            <form action="/login" method="POST">
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" placeholder="Username" id="username"/>
                 </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" placeholder="Password" id="password"/>
+                </div>
+                <ul class="actions">
+                    <li>
+                        <button>로그인</button>
+                    </li>
+                </ul>
+                <a href="/join">아직 회원이 아니신가요?</a>
+            </form>
 
-                <!--                <div class="form-group">-->
-                <!--                    <label for="content">내용</label>-->
-                <!--                    <textarea class="form-control summernote" rows="5" id="content"></textarea>-->
-                <!--                </div>-->
-            </form2>
-            <br/>
-            <button id="btn-save" class="btn btn-primary">완료</button>
-        </div>
+        </article>
+
+
+
     </div>
 
 
@@ -99,7 +98,6 @@
 <script src="js/skel.min.js"></script>
 <script src="js/util.js"></script>
 <script src="js/main.js"></script>
-<script src="js/board.js"></script>
-
+<script src="js/user.js"></script>
 </body>
 </html>
