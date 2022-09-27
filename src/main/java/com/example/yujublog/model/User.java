@@ -31,8 +31,8 @@ public class User {
 //    @Column(nullable = false, length = 500)
     private String email;
 
-    @ColumnDefault("USER")
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private RoleType role;
 
 //    private String provider;
 //

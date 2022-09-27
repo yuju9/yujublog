@@ -19,11 +19,11 @@ public class SecurityConfig {
 
         http
                 .authorizeRequests()
-                .antMatchers("/admin/**")
-                .access("hasRole('USER')")
+//                .antMatchers("/board")
+//                .access("hasRole('USER')")
                 .antMatchers("/manager/**")
                 .access("hasRole('MANAGER') or hasRole('ADMIN')")
-                .antMatchers("/board2")
+                .antMatchers("/auth/**")
                 .authenticated()
                 .anyRequest()
                 .permitAll()
@@ -35,4 +35,6 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 }
+

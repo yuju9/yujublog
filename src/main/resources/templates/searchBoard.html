@@ -10,8 +10,8 @@
 	<title>Yuju 블로그</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="css/main.css" />
-	<noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
+	<link rel="stylesheet" href="/css/main.css" />
+	<noscript><link rel="stylesheet" href="/css/noscript.css" /></noscript>
 	<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
@@ -66,7 +66,7 @@
 		</form>
 		<!-- Posts -->
 		<section class="posts">
-			<article th:each="board: ${boards}">
+			<article th:each="board : ${boardList}">
 				<header>
 					<span class="date" th:text="${board.createDate}">April 24, 2017</span>
 					<h2 th:text="${board.title}"><a href="#">Sed magna<br />
@@ -75,7 +75,7 @@
 				<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
 				<p th:text="${board.content}">Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
 				<ul class="actions">
-					<li><a th:href="@{/board/{id}(id=${board.getId()})}" class="button">자세히</a></li>
+					<li><a th:href="@{'/board/' + ${board.id}}" class="button">자세히</a></li>
 					<li><button id ="btn-delete">삭제</button></li>
 				</ul>
 				<div hidden>
@@ -90,23 +90,23 @@
 		</article>
 
 
-		<!-- Footer -->
-		<footer>
-			<div class="pagination" th:if="!${boards.last} and !${boards.first}">
-				<a class="previous" th:href="@{|?page=${boards.getNumber()-1}|}">이전</a>
-				<a class="next" th:href="@{|?page=${boards.getNumber()+1}|}">다음</a>
-			</div>
-			<div class="pagination" th:unless="!${boards.last} and !${boards.first}">
-				<div th:if="${boards.first}">
-					<a class="previous disabled" th:href="@{|?page=${boards.getNumber()-1}|}">이전</a>
-					<a class="next" th:href="@{|?page=${boards.getNumber()+1}|}">다음</a>
-				</div>
-				<div th:unless="${boards.first}">
-					<a class="previous" th:href="@{|?page=${boards.getNumber()-1}|}">이전</a>
-					<a class="next disabled" th:href="@{|?page=${boards.getNumber()+1}|}">다음</a>
-				</div>
-			</div>
-		</footer>
+<!--		&lt;!&ndash; Footer &ndash;&gt;-->
+<!--		<footer>-->
+<!--			<div class="pagination" th:if="!${boardList.last} and !${boardList.first}">-->
+<!--				<a class="previous" th:href="@{|?page=${boardList.getNumber()-1}|}">이전</a>-->
+<!--				<a class="next" th:href="@{|?page=${boardList.getNumber()+1}|}">다음</a>-->
+<!--			</div>-->
+<!--			<div class="pagination" th:unless="!${boardList.last} and !${boardList.first}">-->
+<!--				<div th:if="${boardList.first}">-->
+<!--					<a class="previous disabled" th:href="@{|?page=${boardList.getNumber()-1}|}">이전</a>-->
+<!--					<a class="next" th:href="@{|?page=${boardList.getNumber()+1}|}">다음</a>-->
+<!--				</div>-->
+<!--				<div th:unless="${boardList.first}">-->
+<!--					<a class="previous" th:href="@{|?page=${boardList.getNumber()-1}|}">이전</a>-->
+<!--					<a class="next disabled" th:href="@{|?page=${boardList.getNumber()+1}|}">다음</a>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</footer>-->
 
 	</div>
 
@@ -119,13 +119,13 @@
 </div>
 
 <!-- Scripts -->
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery.scrollex.min.js"></script>
-<script src="js/jquery.scrolly.min.js"></script>
-<script src="js/skel.min.js"></script>
-<script src="js/util.js"></script>
-<script src="js/main.js"></script>
-<script src="js/board.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.scrollex.min.js"></script>
+<script src="/js/jquery.scrolly.min.js"></script>
+<script src="/js/skel.min.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/board.js"></script>
 
 </body>
 </html>

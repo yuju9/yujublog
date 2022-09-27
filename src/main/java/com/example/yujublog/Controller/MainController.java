@@ -24,10 +24,6 @@ public class MainController {
         return "index";
     }
 
-//    @GetMapping("/user/board")
-//    public String board() {
-//        return "board.text";
-//    }
 
     @GetMapping("/board")
     public String board2() {
@@ -55,13 +51,17 @@ public class MainController {
     }
 
     @GetMapping("/join")
-    public String join() {
+    public String joinForm() {
         return "join";
     }
 
     @GetMapping("/loginForm")
-    public String login() {return "login";}
+    public String loginForm() {return "loginForm";}
 
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
 
 
 }

@@ -1,6 +1,7 @@
 package com.example.yujublog.Service;
 
 //import com.example.yujublog.repository.BoardRepository;
+import com.example.yujublog.dto.BlogBoardDto;
 import com.example.yujublog.repository.BlogBoardRepository;
 import com.example.yujublog.model.BlogBoard;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -39,4 +43,27 @@ public class BlogBoardService {
         blogBoardRepository.deleteById(id);
     }
 
+
+    @Transactional
+    public List<BlogBoardDto> searchPosts(String keyword) {
+        List<BlogBoard> blogBoards = blogBoardRepository.findByTitleContaining(keyword);
+        List<BlogBoardDto> blogBoardDtoList = new ArrayList<>();
+
+        if (blogBoards.isEmpty()) return blogBoardDtoList;
+
+        for (BlogBoard boardEntity : blogBoards) {
+            blogBoardDtoList.add(this.convertEntityToDto(boardEntity));
+        }
+
+        return blogBoardDtoList;
+    }
+
+    private BlogBoardDto convertEntityToDto(BlogBoard blogBoard) {
+        return BlogBoardDto.builder()
+                .id(blogBoard.getId())
+                .title(blogBoard.getTitle())
+                .content(blogBoard.getContent())
+                .createDate(blogBoard.getCreateDate())
+                .build();
+    }
 }
