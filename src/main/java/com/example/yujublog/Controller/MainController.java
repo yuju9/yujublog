@@ -55,13 +55,13 @@ public class MainController {
         return "join";
     }
 
-    @GetMapping("/loginForm")
-    public String loginForm() {return "loginForm";}
-
     @GetMapping("/login")
-    public String login(){
-        return "login";
-    }
+    public String login() {return "loginForm";}
+
+//    @GetMapping("/login")
+//    public String login(){
+//        return "login";
+//    }
 
 
 }
