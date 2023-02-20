@@ -13,6 +13,7 @@ public class BlogBoardDto {
     private int id;
     private String title;
     private String content;
+
     private Timestamp createDate;
 
     public BlogBoard toEntity() {

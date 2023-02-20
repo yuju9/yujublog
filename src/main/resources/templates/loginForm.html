@@ -1,21 +1,104 @@
-<!DOCTYPE html>
-
-<html lang="en">
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="kr">
 <head>
-    <meta charset="UTF-8">
-    <title>로그인 페이지</title>
+    <title>Yuju 블로그</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="css/main.css" />
+    <noscript><link rel="stylesheet" href="css/noscript.css" /></noscript>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    />
 </head>
-<body>
-    <h1>로그인 페이지</h1>
-    <hr/>
-    <form th:action="@{/user/login}" method="post">
-        <input type="text" name="username" id="username"><br/>
-        <input type="password" name="password" id="password"><br/>
-        <button>로그인</button>
-    </form>
-    <a href="/oauth2/authorization/google">구글 로그인</a>
-    <a href="/oauth2/authorization/facebook">페이스북 로그인</a>
-    <a href="/oauth2/authorization/naver">네이버 로그인</a>
-    <a href="/join">회원가입을 아직 하지 않으셨나요?</a>
+<body class="is-loading">
+
+<!-- Wrapper -->
+<div id="wrapper" class="fade-in">
+
+    <!-- Intro -->
+    <div id="intro">
+        <h1>H! I'M<br />
+            YUJU</h1>
+        <p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
+            and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
+        <ul class="actions">
+            <li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <a href="/" class="logo">Yuju</a>
+    </header>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul class="links">
+            <li><a href="/">MAIN</a></li>
+            <li><a href="/mainBoard">BOARD</a></li>
+            <li><a href="/news">NEWS</a></li>
+            <li><a href="/music">MUSIC</a></li>
+            <li><a href="/ask">ASK</a></li>
+        </ul>
+        <<ul class="icons">
+        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon fa-google-plus"><span class="label">Google</span></a></li>
+        <li class="nav-item">
+            <a sec:authorize="isAnonymous()" href="/login" class="icon fa-sign-in"><span class="label">Sign In</span></a>
+            <a sec:authorize="isAuthenticated()" href="/logout" class="icon fa-sign-out"><span class="label">Sign Out</span></a>
+        </li>
+    </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- Featured Post -->
+        <article class="post featured">
+            <form th:action="@{/user/login}" method="post">
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" />
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" />
+                </div>
+                <ul class="actions">
+                    <li>
+                        <button>로그인</button>
+                    </li>
+                </ul>
+            </form>
+            <a href="/join">회원가입을 아직 하지 않으셨나요?</a>
+        </article>
+
+
+
+    </div>
+
+
+    <!-- Copyright -->
+    <div id="copyright">
+        Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.scrollex.min.js"></script>
+<script src="js/jquery.scrolly.min.js"></script>
+<script src="js/skel.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/main.js"></script>
+<script src="js/user.js"></script>
 </body>
 </html>

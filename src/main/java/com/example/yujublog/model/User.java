@@ -24,21 +24,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-//    @Column(nullable = false, length = 1000, unique = true)
+    @Column(nullable = false, length = 100, unique = true)
+    private String nickname;
+
+    @Column(nullable = false, length = 1000, unique = true)
     private String username;
 
-//    @Column(nullable = false, length = 1000)
+    @Column(nullable = false)
     private String password;
 
-//    @Column(nullable = false, length = 500)
+    @Column(nullable = false)
     private String email;
 
     @Enumerated(EnumType.STRING)
     private RoleType role;
-
-//    private String provider;
-//
-//    private String providerId;
 
     @CreationTimestamp
     private Timestamp createDate;

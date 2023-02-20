@@ -49,8 +49,7 @@
 		</ul>
 		<ul class="icons">
 			<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-			<li><a href="#" class="icon fa-google-plus"><span class="label">Facebook</span></a></li>
-			<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+			<li><a href="#" class="icon fa-google-plus"><span class="label">Google</span></a></li>
 			<li><a href="/login" class="icon fa-sign-in"><span class="label">Sign In</span></a></li>
 		</ul>
 	</nav>
@@ -64,6 +63,7 @@
 
 			<button>검색하기</button>
 		</form>
+
 		<!-- Posts -->
 		<section class="posts">
 			<article th:each="board: ${boards}">
@@ -83,11 +83,6 @@
 				</div>
 			</article>
 		</section>
-		<article class="post featured">
-			<ul class="actions">
-				<li><a href="/board" class="button big">글쓰기</a></li>
-			</ul>
-		</article>
 
 
 		<!-- Footer -->
@@ -107,6 +102,12 @@
 				</div>
 			</div>
 		</footer>
+
+		<article class="post featured">
+			<ul class="actions">
+				<li><a href="/board" class="button big">글쓰기</a></li>
+			</ul>
+		</article>
 
 	</div>
 

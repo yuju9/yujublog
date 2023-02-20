@@ -7,6 +7,7 @@ let index = {
 
     register:function () {
         let data = {
+            nickname: $("#nickname").val(),
             username: $("#username").val(),
             password: $("#password").val(),
             email: $("#email").val()

@@ -49,8 +49,7 @@
                 </ul>
                 <ul class="icons">
                     <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                    <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                    <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon fa-google-plus"><span class="label">Google</span></a></li>
                     <li><a href="/login" class="icon fa-sign-in"><span class="label">Sign In</span></a></li>
                 </ul>
             </nav>
@@ -61,7 +60,7 @@
                     <header class="major">
                         <span class="date" th:text="${board.getCreateDate()}">April 25, 2017</span>
                         <div>
-                        글번호 : <span th:id="id"><i th:text="${board.id}"></i></span><br></div>
+                        카테고리 : <span th:id="id"><i th:text="${board.category}"></i></span><br></div>
                         <h2 th:text="${board.title}">And this is a<br />
                             massive headline</h2>
                         <p th:text="${board.content}"></p>
